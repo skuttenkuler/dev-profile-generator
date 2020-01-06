@@ -1,0 +1,22 @@
+{
+  "name": "npm",
+  "version": "1.0.0",
+  "description": "dev-gen",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skuttenkuler/dev-profile-generator.git"
+  },
+  "author": "samkuttenkuler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skuttenkuler/dev-profile-generator/issues"
+  },
+  "homepage": "https://github.com/skuttenkuler/dev-profile-generator#readme",
+  "dependencies": {
+    "electron": "^7.1.7"
+  }
+}
