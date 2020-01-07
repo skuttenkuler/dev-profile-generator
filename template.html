@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Template</title>
     <style>
-             .color{
-                 background-color: antiquewhite;
+             
+             h1, h4{
+                 padding: 0;
+                 margin: 0; 
              }
              #Blue{
                  background-color:#0000FF;
@@ -27,7 +29,7 @@
              #Yellow{
                  background-color: #FFFF00;
                  color:#fff;
-                 border-color:FFFF00;
+                 border-color:#FFFF00;
              }
              #Orange{
                  background-color: #FFA500;
@@ -39,17 +41,109 @@
                  color:#fff;
                  border-color:#6a0dad;
              }
+             body{
+                 margin: 0;
+                 padding: 0;
+                 background-color: grey;
+             }
+             .container{
+             
+                height: 27.94cm;
+                width: 21.59cm;
+                margin-top: 100px;
+             }
+             header{
+                 text-align: center;
+             }
+             header h1{
+                font-size: 40px;
+                color: #fff;
+                text-shadow: 2px 2px black;
+            }
+            .hi{
+               
+                padding-bottom:20px;
+                
+            }
+             .image{
+                 border-radius:50%;
+                 transform: translateY(-50%);
+                 position: relative;
+                 width: 250px;
+                 height: auto;
+               
+                 box-shadow: 0 0 20px rgb(255, 255, 255);
+             }
+             hr{
+                 background-color: black;
+                 box-shadow: 0 0 20px rgb(255, 255, 255);
+                 height: 2px;
+                 width: 80%;
+                 margin-bottom: 40px;
+             }
+             .bio{
+                 margin-left:70px;
+                 text-align: center;
+                 width: 80%;
+             }
+             p{
+                font-size: 17px;
+                color: #fff;
+                text-shadow: 2px 2px black;
+             }
+             .color{
+                background-color: antiquewhite;
+            }
+            .userLinks a{
+                text-decoration: none;
+                color: #fff;
+                font-size: 30px;
+                text-shadow: 1px 1px black;
+                padding: 20px;
+            }
+            .userLinks{
+                text-align: center;
+            }
+            .stats{
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+            #repos{
+                height: 100px;
+                width: 300px;
+                text-align: center;
+                
+            }
+            #followers{
+                height: 100px;
+                width: 300px;
+                text-align: center;
+               
+            }
+            #stars{
+                height: 100px;
+                width: 300px;
+                text-align: center;
+            
+            }
+            #following{
+                height: 100px;
+                width: 300px;
+                text-align: center;
+                
+            }
          </style>
      </head>
              <body>
                  <div class="container">
         
                  <header class="color">
-                     <img src="">
+                     <img class="image"src="http://vickmark.com/wp-content/uploads/2011/03/12-704-page/ato-headshot(pp_w1251_h834).jpg">
                         <h1 class="hi">Hello,</h1>
                         <h1>my name is name</h1>
+                        <hr>
                          <div class="userLinks">
-                            <hr>
                             <a href="#">location</a>
                             <a href="#">github</a>
                             <a href="#"> blog</a>
@@ -60,18 +154,24 @@
                  </div>
                  <div class="stats">
                      <table>
-                         <tr>
-                             <td class="color">
+                        <tr>
+                             <td id="repos" class="color">
                                  <h4>Public Repos:</h4>
                                  <p>repo</p>
                              </td>
-                             <td class="color">
+                             <td id="followers" class="color">
                                     <h4>Followers:</h4>
                                     <p>followers</p>
                                 </td>
-                            <td class="color">
+                        </tr>
+                        <tr>
+                            <td id="stars" class="color">
                                     <h4>Stars:</h4>
                                     <p>stars</p>
+                                </td>
+                            <td id="following" class="color">
+                                    <h4>Following:</h4>
+                                    <p>following</p>
                                 </td>
 
                          </tr>
