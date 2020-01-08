@@ -1,4 +1,4 @@
-exports.RenderContent = (data, color, stars) => {
+exports.RenderContent = (data, stars, color) => {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,11 +27,7 @@ exports.RenderContent = (data, color, stars) => {
                  color:#fff;
                  border-color:#ff0000;
              }
-             .Yellow{
-                 background-color: #FFFF00;
-                 color:#fff;
-                 border-color:#FFFF00;
-             }
+             
              .Orange{
                  background-color: #FFA500;
                  color:#fff;
@@ -45,20 +41,21 @@ exports.RenderContent = (data, color, stars) => {
              body{
                  margin: 0;
                  padding: 0;
-                 background-color: grey;
+                 background-color: lightskyblue;
              }
              .container{
              
-                height: 27.94cm;
+                height: 25cm;
                 width: 21.59cm;
-                margin-top: 100px;
+                margin-top: 120px;
              }
              header{
                  text-align: center;
+                 padding-top: 40px;
              }
              header h1{
                 font-size: 40px;
-                color: #fff;
+                
                 text-shadow: 2px 2px black;
             }
             .hi{
@@ -89,29 +86,28 @@ exports.RenderContent = (data, color, stars) => {
              }
              p{
                 font-size: 17px;
-                color: #fff;
-                text-shadow: 2px 2px black;
+                text-shadow: .25px .25px black;
              }
              .color{
                 background-color: antiquewhite;
             }
             .userLinks a{
                 text-decoration: none;
-                color: #fff;
                 font-size: 30px;
-                text-shadow: 1px 1px black;
+                text-shadow: .25px .25px black;
                 padding: 20px;
+                color: white;
                 
             }
             .userLinks{
                 text-align: center;
                 margin-bottom:15px;
+
             }
             .stats{
                 display: flex;
                 justify-content: center;
                 width: 100%;
-                color: #fff;
                 font-size: 20px;
                 text-shadow: 1px 1px black;
                 
@@ -120,28 +116,33 @@ exports.RenderContent = (data, color, stars) => {
                 border-spacing: 25px;
 
             }
+            table p{
+                font-size: 20px;
+            }
             #repos{
                 height: 100px;
                 width: 325px;
                 text-align: center;
+                border-radius:15px;
                 
             }
             #followers{
                 height: 100px;
                 width: 325px;
                 text-align: center;
-               
+                border-radius:15px;
             }
             #stars{
                 height: 100px;
                 width: 325px;
                 text-align: center;
-            
+                border-radius:15px;
             }
             #following{
                 height: 100px;
                 width: 325px;
                 text-align: center;
+                border-radius:15px;
                 
             }
          </style>
@@ -155,9 +156,9 @@ exports.RenderContent = (data, color, stars) => {
                         <h1>my name is ${data.name}</h1>
                         <hr>
                          <div class="userLinks">
-                            <a href="#">${data.location}</a>
-                            <a href="${data.html_url}">github</a>
-                            <a href="${data.blog}">blog</a>
+                            <a href="href="https://google.com/maps/place/${data.location.split(' ').join('+')}">${data.location}</a>
+                            <a href="${data.html_url}">Github</a>
+                            <a href="${data.blog}">Blog</a>
                         </div>
                  </header>
                  <div class="bio">

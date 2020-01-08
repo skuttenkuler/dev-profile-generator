@@ -2,7 +2,7 @@ const fs = require('fs');
 const axios = require('axios');
 const inquirer = require('inquirer');
 const html = require('./html.js');
-const electron = require('electron-html-to');
+const convertFactory = require('electron-html-to');
 
 var userName;
 var color;
@@ -19,7 +19,7 @@ inquirer.prompt([
         type: 'list',
         name: 'favColor',
         message: 'What is your favorite color?  ',
-        choices: ['Blue', 'Green', 'Red', 'Yellow', 'Orange', 'Purple']
+        choices: ['Blue', 'Green', 'Red', 'Orange', 'Purple']
     }
 
 ]).then(responses => {
@@ -37,25 +37,26 @@ function getProfile() {
     var queryData = "http://api.github.com/users/"+ userName;
     axios.get(queryData).then(response => {
         var data = response.data;
-        console.log(data.location)
+        
         // then second call to get stars data
         queryData += "/starred";
         axios.get(queryData).then(starsRes => {
              var stars = starsRes.data;
              //console.log(stars)
              dataContent = html.RenderContent(data, stars, color);
+             console.log(dataContent);
              RenderPdf();
         }); 
     });
 }
-var electronPDF = electron({
-    converterPath: electron.converters.PDF,
+var conversion = convertFactory({
+    converterPath: convertFactory.converters.PDF,
     allowLocalFilesAccess: true,
 });
 //function to render a PDF
 function RenderPdf() {
     console.log("Writing file....");
-    electronPDF({
+    conversion({
         html: dataContent,
         pdf: {
             pageSize: 'Letter',
@@ -66,9 +67,9 @@ function RenderPdf() {
            
             throw error;
         }
-        result.stream.pipe(fs.createWriteStream('./'+ userName +'.pdf'));
+        result.stream.pipe(fs.createWriteStream('./'+userName+'.pdf'));
         console.log("Profile Generated!");
-        electronPDF.kill();
+        conversion.kill();
     
     });
 
