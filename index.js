@@ -29,7 +29,7 @@ inquirer.prompt([
     userName = responses.username;
     color = responses.favColor;
     getProfile();
-})
+});
 
 //get Github data
 //create function
@@ -47,12 +47,12 @@ function getProfile() {
              //console.log(stars)
              dataContent = html.RenderContent(data, stars, color);
              RenderPdf();
-        }) 
-    })
+        }); 
+    });
 }
 var electronPDF = electron({
     converterPath: electron.converters.PDF,
-    allowLocalFilesAccess: true
+    allowLocalFilesAccess: true,
 });
 //function to render a PDF
 function RenderPdf() {
