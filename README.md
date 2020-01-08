@@ -23,9 +23,28 @@ Node.js Developer Profile Generator for Berkeley Bootcamp
 ![Alt text](./assets/images/dev-gen.gif?raw=true "Preview Gif")
 
 # Code Snippets
-    - Create a User with Firebase method
-    - Save user information to collection in Firestore
-    '''function RenderPdf() {
+    - function that fires axios calls to get necessary data for profile then points our html template with data to      global variable for conversion. 
+
+    function getProfile() {
+    //set up query address
+    //perform axios call to get user data
+    var queryData = "http://api.github.com/users/"+ userName;
+    axios.get(queryData).then(response => {
+        var data = response.data;
+        
+        // then second call to get stars data
+        queryData += "/starred";
+        axios.get(queryData).then(starsRes => {
+             var stars = starsRes.data;
+             dataContent = html.RenderContent(data, stars, color);
+             
+             RenderPdf();
+        }); 
+    });
+}
+
+    - function that takes the html template with injected data then converts and creates the pdf file.
+    function RenderPdf() {
     console.log("Writing file....");
     conversion({
         html: dataContent,
@@ -40,7 +59,7 @@ Node.js Developer Profile Generator for Berkeley Bootcamp
         }
         result.stream.pipe(fs.createWriteStream('./'+userName+'.pdf'));
         console.log("Profile Generated!");
-        conversion.kill();'''
+        conversion.kill();
     
     });
 
