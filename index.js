@@ -4,13 +4,10 @@ const inquirer = require('inquirer');
 const html = require('./html.js');
 const electron = require('electron-html-to');
 
-//contstants
-//username
-var username
-//favorite color
-var userColor
-//pdf
-var pdf
+var userName;
+var color;
+var dataContent;
+
 //set up inquirer to get information needed from user
 inquirer.prompt([
     {
@@ -28,6 +25,7 @@ inquirer.prompt([
 ]).then(responses => {
     userName = responses.username;
     color = responses.favColor;
+    //console.log(userName,color)
     getProfile();
 });
 
@@ -39,7 +37,7 @@ function getProfile() {
     var queryData = "http://api.github.com/users/"+ userName;
     axios.get(queryData).then(response => {
         var data = response.data;
-        //console.log(data)
+        console.log(data.location)
         // then second call to get stars data
         queryData += "/starred";
         axios.get(queryData).then(starsRes => {
@@ -58,16 +56,17 @@ var electronPDF = electron({
 function RenderPdf() {
     console.log("Writing file....");
     electronPDF({
-        html: pdfContent,
+        html: dataContent,
         pdf: {
             pageSize: 'Letter',
             printBackground: true
         }
     }, (error, result) => {
         if(error) {
+           
             throw error;
         }
-        fs.createWriteStream(userName + 'pdf');
+        result.stream.pipe(fs.createWriteStream('./'+ userName +'.pdf'));
         console.log("Profile Generated!");
         electronPDF.kill();
     

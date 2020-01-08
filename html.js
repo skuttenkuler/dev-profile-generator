@@ -12,32 +12,32 @@ exports.RenderContent = (data, color, stars) => {
                  padding: 0;
                  margin: 0; 
              }
-             #Blue{
+             .Blue{
                  background-color:#0000FF;
                  color:#fff;
                  border-color:#0000FF;
              }
-             #Green{
+             .Green{
                  background-color:#00ff00;
                  color:#fff;
                  border-color:#00ff00;
              }
-             #Red{
+             .Red{
                  background-color:#ff0000;
                  color:#fff;
                  border-color:#ff0000;
              }
-             #Yellow{
+             .Yellow{
                  background-color: #FFFF00;
                  color:#fff;
                  border-color:#FFFF00;
              }
-             #Orange{
+             .Orange{
                  background-color: #FFA500;
                  color:#fff;
                  border-color:#FFA500;
              }
-             #Purple{
+             .Purple{
                  background-color: #6a0dad;
                  color:#fff;
                  border-color:#6a0dad;
@@ -149,40 +149,40 @@ exports.RenderContent = (data, color, stars) => {
              <body>
                  <div class="container">
         
-                 <header class="color">
-                     <img class="image"src="http://vickmark.com/wp-content/uploads/2011/03/12-704-page/ato-headshot(pp_w1251_h834).jpg">
+                 <header class="${color}">
+                     <img class="image"src="${data.avatar_url}">
                         <h1 class="hi">Hello,</h1>
-                        <h1>my name is name</h1>
+                        <h1>my name is ${data.name}</h1>
                         <hr>
                          <div class="userLinks">
-                            <a href="#">location</a>
-                            <a href="#">github</a>
-                            <a href="#"> blog</a>
+                            <a href="#">${data.location}</a>
+                            <a href="${data.html_url}">github</a>
+                            <a href="${data.blog}">blog</a>
                         </div>
                  </header>
                  <div class="bio">
-                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores aperiam facere, autem provident voluptas error minima porro, recusandae rerum quam pariatur tempore. Aliquid, corrupti commodi. Asperiores eos quos accusantium minus!</p>
+                     <p>${data.bio}</p>
                  </div>
                  <div class="stats">
                      <table>
                         <tr>
-                             <td id="repos" class="color">
+                             <td id="repos" class="${color}">
                                  <h4>Public Repos:</h4>
-                                 <p>repo</p>
+                                 <p>${data.public_repos}</p>
                              </td>
-                             <td id="followers" class="color">
+                             <td id="followers" class="${color}">
                                     <h4>Followers:</h4>
-                                    <p>followers</p>
+                                    <p>${data.followers}</p>
                                 </td>
                         </tr>
                         <tr>
-                            <td id="stars" class="color">
+                            <td id="stars" class="${color}">
                                     <h4>Stars:</h4>
-                                    <p>stars</p>
+                                    <p>${stars.length}</p>
                                 </td>
-                            <td id="following" class="color">
+                            <td id="following" class="${color}">
                                     <h4>Following:</h4>
-                                    <p>following</p>
+                                    <p>${data.following}</p>
                                 </td>
 
                          </tr>
